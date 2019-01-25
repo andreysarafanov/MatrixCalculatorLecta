@@ -11,7 +11,7 @@ namespace MatrixCalculator.IO.File
 			_filePath = filePath;
 		}
 
-		public StreamReader GetFileContent()
+		public TextReader GetFileContent()
 		{
 			return System.IO.File.OpenText(_filePath);
 		}

@@ -2,3 +2,4 @@
 *.DotSettings.user
 packages/
 obj/
+bin/

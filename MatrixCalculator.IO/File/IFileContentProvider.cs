@@ -4,6 +4,6 @@ namespace MatrixCalculator.IO.File
 {
 	public interface IFileContentProvider
 	{
-		StreamReader GetFileContent();
+		TextReader GetFileContent();
 	}
 }
