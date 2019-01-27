@@ -60,7 +60,7 @@ namespace MatrixCalculator.Tests.Unit
 					Operation = Operation.Multiply, Matrices = new[]
 					{
 						new Matrix(7, 1, new[] {1, 2, 3, 4, 5, 6, 7}),
-						new Matrix(1, 7, new[] {2, 4, 5, 6, 7, 8, 141}),
+						new Matrix(1, 7, new[] {-2, -4, -5, -6, -7, -8, 141}),
 					}
 				}
 			);
@@ -71,7 +71,7 @@ namespace MatrixCalculator.Tests.Unit
 				{
 					Operation = Operation.Transpose, Matrices = new[]
 					{
-						new Matrix(4, 4, new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}),
+						new Matrix(4, 4, new[] {1, 2, 3, -4, 5, 6, -7, 8, 9, -10, 11, 12, 13, 14, 15, 16}),
 						new Matrix(5, 3, new[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47}),
 						new Matrix(5, 3, new[] {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47}),
 					}

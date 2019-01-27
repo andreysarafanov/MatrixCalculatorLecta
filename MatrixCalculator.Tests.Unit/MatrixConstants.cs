@@ -10,19 +10,19 @@ namespace MatrixCalculator.Tests.Unit
 
 1 2 3 4 5 6 7
 
-2
-4
-5
-6
-7
-8
+-2
+-4
+-5
+-6
+-7
+-8
 141";
 
 		public const string CorrectFileExampleTwo = @"transpose
 
-1 2 3 4
-5 6 7 8
-9 10 11 12
+1 2 3 -4
+5 6 -7 8
+9 -10 11 12
 13 14 15 16
 
 2 3 5 7 11
