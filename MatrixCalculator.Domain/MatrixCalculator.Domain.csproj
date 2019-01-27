@@ -33,7 +33,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Include="Entities\CalculationTask.cs" />
-	  <Compile Include="Entities\TaskResult.cs" />
+	  <Compile Include="Entities\ResultOrError.cs" />
 	  <Compile Include="Entities\Matrix.cs" />
 	  <Compile Include="Entities\Operation.cs" />
 	  <Compile Include="Factories\ITaskRunnerFactory.cs" />

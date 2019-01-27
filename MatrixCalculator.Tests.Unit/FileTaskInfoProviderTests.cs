@@ -35,6 +35,7 @@ namespace MatrixCalculator.Tests.Unit
 		[TestCase(MatrixConstants.IncorrectFileExampleTwo)]
 		[TestCase(MatrixConstants.IncorrectFileExampleThree)]
 		[TestCase(MatrixConstants.IncorrectFileExampleFour)]
+		[TestCase(MatrixConstants.IncorrectFileExampleFive)]
 		public void FileTaskInfoProvider_WhenProvidedWithIncorrectText_ReturnsError(string text)
 		{
 			var contentProvider = PrepareFileContentProvider(text);

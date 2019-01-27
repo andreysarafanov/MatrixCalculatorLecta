@@ -2,13 +2,13 @@ using System;
 
 namespace MatrixCalculator.Domain.Entities
 {
-	public class TaskResult<TResult, TError>
+	public class ResultOrError<TResult, TError>
 	{
 		private TResult _result;
 		private TError _error;
 		public bool IsError { get; private set; }
 
-		private TaskResult()
+		private ResultOrError()
 		{
 		}
 
@@ -24,18 +24,18 @@ namespace MatrixCalculator.Domain.Entities
 			}
 		}
 
-		public static TaskResult<TResult, TError> FromResult(TResult result)
+		public static ResultOrError<TResult, TError> FromResult(TResult result)
 		{
-			return new TaskResult<TResult, TError>
+			return new ResultOrError<TResult, TError>
 			{
 				_result =  result,
 				IsError = false
 			};
 		}
 
-		public static TaskResult<TResult, TError> FromError(TError error)
+		public static ResultOrError<TResult, TError> FromError(TError error)
 		{
-			return new TaskResult<TResult, TError>
+			return new ResultOrError<TResult, TError>
 			{
 				_error = error,
 				IsError = true

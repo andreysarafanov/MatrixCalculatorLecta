@@ -5,6 +5,6 @@ namespace MatrixCalculator.Domain.Interfaces
 {
 	public interface ITaskInfoProvider
 	{
-		TaskResult<CalculationTask, string> GetTaskDetails();
+		ResultOrError<CalculationTask, string> GetTaskDetails();
 	}
 }
