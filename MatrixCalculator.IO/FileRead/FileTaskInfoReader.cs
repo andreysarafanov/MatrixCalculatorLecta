@@ -48,7 +48,7 @@ namespace MatrixCalculator.IO.FileRead
 					var matrixOrError = ParseMatrix(parts[i]);
 					if (matrixOrError.IsError)
 						return ResultOrError<CalculationTask, string>.FromError(
-							$"Ошибка в матрице #{i - 1}: {matrixOrError.Error}");
+							$"Ошибка в матрице #{i}: {matrixOrError.Error}");
 
 					matrices[i - 1] = matrixOrError.Result;
 				}
