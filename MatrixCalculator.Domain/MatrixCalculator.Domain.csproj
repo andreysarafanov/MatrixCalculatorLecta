@@ -41,7 +41,8 @@
 	  <Compile Include="Interfaces\IMatrixCalculator.cs" />
 	  <Compile Include="Interfaces\ITaskInfoProvider.cs" />
 	  <Compile Include="Interfaces\ITaskResultSaver.cs" />
-	  <Compile Include="ITaskRunner.cs" />
+	  <Compile Include="Interfaces\ITaskRunner.cs" />
+	  <Compile Include="Services\MatrixCalculatorImpl.cs" />
 	  <Compile Include="TaskRunner.cs" />
 	</ItemGroup>
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

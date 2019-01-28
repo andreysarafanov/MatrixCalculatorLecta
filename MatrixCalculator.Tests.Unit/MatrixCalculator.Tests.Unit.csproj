@@ -70,6 +70,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="FileTaskInfoProviderTests.cs" />
+		<Compile Include="MatrixCalculatorTests.cs" />
 		<Compile Include="MatrixEqualityComparer.cs" />
 		<Compile Include="Properties\AssemblyInfo.cs" />
 		<Compile Include="MatrixConstants.cs" />
