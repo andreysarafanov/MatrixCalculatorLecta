@@ -92,16 +92,23 @@ namespace MatrixCalculator.Tests.Unit
 		}
 
 		[Test]
-		public void MultiplyOperation_WhenProvidedWithTwoRectangleMatrices_ReturnsCorrectResult()
+		public void MultiplyOperation_WhenProvidedWithTwoRectangularMatrices_ReturnsCorrectResult()
 		{
 			var expectedResult = new Matrix(2, 2, new[]
 			{
-				22, 34,
-				88, 136,
+				-4, 4,
+				2, -2,
 			});
-			var result = _calculator.MultiplyMatrices(_firstMatrix2X2, _secondMatrix2X2);
+			var result = _calculator.MultiplyMatrices(_firstMatrix2X3, _firstMatrix3X2);
 			Assert.IsFalse(result.IsError);
 			Assert.That(result.Result, Is.EqualTo(expectedResult).Using(new MatrixEqualityComparer()));
+		}
+
+		[Test]
+		public void MultiplyOperation_WhenProvidedWithTwoIncompatibleMatrices_ReturnsCorrectError()
+		{
+			var result = _calculator.MultiplyMatrices(_firstMatrix2X3, _firstMatrix2X3);
+			Assert.IsTrue(result.IsError);
 		}
 
 		#region MatrixConstants

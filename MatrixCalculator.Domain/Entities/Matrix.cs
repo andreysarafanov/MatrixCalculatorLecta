@@ -11,12 +11,12 @@ namespace MatrixCalculator.Domain.Entities
 			get
 			{
 				CheckBounds(i, j);
-				return ValuesOneDimensional[j * Width + i];
+				return ValuesOneDimensional[i * Width + j];
 			}
 			set
 			{
 				CheckBounds(i, j);
-				ValuesOneDimensional[j * Width + i] = value;
+				ValuesOneDimensional[i * Width + j] = value;
 			}
 		}
 
@@ -30,21 +30,21 @@ namespace MatrixCalculator.Domain.Entities
 				throw new ArgumentException("The number of elements in a matrix should be Width * Height");
 			}
 
-			Width = width;
 			Height = height;
+			Width = width;
 			ValuesOneDimensional = valuesOneDimensional;
 		}
 
 		public Matrix(int height, int width)
 		{
-			Width = width;
 			Height = height;
+			Width = width;
 			ValuesOneDimensional = new int[width * height];
 		}
 
 		private void CheckBounds(int i, int j)
 		{
-			if (i < 0 || i >= Width || j < 0 || j >= Height)
+			if (i < 0 || i >= Height || j < 0 || j >= Width)
 			{
 				throw new IndexOutOfRangeException();
 			}
