@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using MatrixCalculator.Domain.Entities;
-
 namespace MatrixCalculator.Tests.Unit
 {
 	public class MatrixConstants

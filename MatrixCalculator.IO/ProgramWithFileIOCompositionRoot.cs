@@ -22,7 +22,6 @@ namespace MatrixCalculator.IO
 		public void ProcessDirectory(string directoryPath, Action<string> threadSafeCallback)
 		{
 			var files = Directory.GetFiles(directoryPath).Where(p => !p.EndsWith("_result.txt")).ToArray();
-			var total = files.Length;
 			Parallel.ForEach(files, file =>
 			{
 				var runner = _taskRunnerFactory.CreateTaskRunner(GetReaderForFile(file), GetSaverForFile(file));
