@@ -54,7 +54,7 @@ namespace MatrixCalculator.Domain.Services
 				var resultOrError = operation(leftOp, rightOp);
 				if (resultOrError.IsError)
 				{
-					return ResultOrError<Matrix, string>.FromError($"Ошибка при обработке матрицы #{i - 1}: {resultOrError.Error}");
+					return ResultOrError<Matrix, string>.FromError($"Ошибка при обработке матрицы #{i}: {resultOrError.Error}");
 				}
 
 				result = resultOrError.Result;
