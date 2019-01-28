@@ -7,6 +7,6 @@ namespace MatrixCalculator.Domain.Interfaces
 		ResultOrError<Matrix, string> AddMatrices(Matrix leftOp, Matrix rightOp);
 		ResultOrError<Matrix, string> SubtractMatrices(Matrix leftOp, Matrix rightOp);
 		ResultOrError<Matrix, string> MultiplyMatrices(Matrix leftOp, Matrix rightOp);
-		ResultOrError<Matrix, string> TransposeMatrix(Matrix matrix);
+		Matrix TransposeMatrix(Matrix matrix);
 	}
 }

@@ -57,7 +57,7 @@ namespace MatrixCalculator.Domain.Services
 			return ResultOrError<Matrix, string>.FromResult(result);
 		}
 
-		public ResultOrError<Matrix, string> TransposeMatrix(Matrix matrix)
+		public Matrix TransposeMatrix(Matrix matrix)
 		{
 			var result = new Matrix(matrix.Width, matrix.Height);
 			for (var i = 0; i < matrix.Height; i++)
@@ -67,7 +67,8 @@ namespace MatrixCalculator.Domain.Services
 					result[j, i] = matrix[i, j];
 				}
 			}
-			return ResultOrError<Matrix, string>.FromResult(result);
+
+			return result;
 		}
 	}
 }

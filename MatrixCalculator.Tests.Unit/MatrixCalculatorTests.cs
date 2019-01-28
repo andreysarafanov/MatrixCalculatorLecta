@@ -60,8 +60,7 @@ namespace MatrixCalculator.Tests.Unit
 				4, 16
 			});
 			var result = _calculator.TransposeMatrix(_firstMatrix2X2);
-			Assert.IsFalse(result.IsError);
-			Assert.That(result.Result, Is.EqualTo(expectedResult).Using(new MatrixEqualityComparer()));
+			Assert.That(result, Is.EqualTo(expectedResult).Using(new MatrixEqualityComparer()));
 		}
 
 		[Test]
@@ -74,8 +73,7 @@ namespace MatrixCalculator.Tests.Unit
 				3, 6
 			});
 			var result = _calculator.TransposeMatrix(_firstMatrix2X3);
-			Assert.IsFalse(result.IsError);
-			Assert.That(result.Result, Is.EqualTo(expectedResult).Using(new MatrixEqualityComparer()));
+			Assert.That(result, Is.EqualTo(expectedResult).Using(new MatrixEqualityComparer()));
 		}
 
 		[Test]
