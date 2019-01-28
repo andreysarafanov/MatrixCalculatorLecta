@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using MatrixCalculator.Domain.Entities;
 using MatrixCalculator.Domain.Interfaces;
@@ -14,40 +15,40 @@ namespace MatrixCalculator.Domain.Services
 			_matrixCalculator = matrixCalculator;
 		}
 
-		public ResultOrError<Matrix, string> SumAllMatrices(Matrix[] matrices)
+		public ResultOrError<Matrix, string> SumAllMatrices(IReadOnlyList<Matrix> matrices)
 		{
 			return CalculateMatrices(matrices, _matrixCalculator.AddMatrices);
 		}
 
-		public ResultOrError<Matrix, string> MultiplyAllMatrices(Matrix[] matrices)
+		public ResultOrError<Matrix, string> MultiplyAllMatrices(IReadOnlyList<Matrix> matrices)
 		{
 			return CalculateMatrices(matrices, _matrixCalculator.MultiplyMatrices);
 		}
 
-		public ResultOrError<Matrix, string> SubtractAllMatrices(Matrix[] matrices)
+		public ResultOrError<Matrix, string> SubtractAllMatrices(IReadOnlyList<Matrix> matrices)
 		{
 			return CalculateMatrices(matrices, _matrixCalculator.SubtractMatrices);
 		}
 
-		public ResultOrError<Matrix[], string> TransposeAllMatrices(Matrix[] matrices)
+		public ResultOrError<IReadOnlyList<Matrix>, string> TransposeAllMatrices(IReadOnlyList<Matrix> matrices)
 		{
 			var resultMatrices = matrices
 				.Select(_matrixCalculator.TransposeMatrix)
 				.ToArray();
-			return ResultOrError<Matrix[], string>.FromResult(resultMatrices);
+			return ResultOrError<IReadOnlyList<Matrix>, string>.FromResult(resultMatrices);
 		}
 
 		private ResultOrError<Matrix, string> CalculateMatrices(
-			Matrix[] matrices,
+			IReadOnlyList<Matrix> matrices,
 			Func<Matrix, Matrix, ResultOrError<Matrix, string>> operation)
 		{
-			if (matrices.Length < 2)
+			if (matrices.Count < 2)
 			{
 				return ResultOrError<Matrix, string>.FromError("Нужно минимум две матрицы");
 			}
 
 			Matrix result = null;
-			for (var i = 1; i < matrices.Length; i++)
+			for (var i = 1; i < matrices.Count; i++)
 			{
 				var rightOp = matrices[i];
 				var leftOp = result ?? matrices[i - 1];

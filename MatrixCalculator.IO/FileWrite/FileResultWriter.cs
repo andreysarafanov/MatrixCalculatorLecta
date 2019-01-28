@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using MatrixCalculator.Domain.Entities;
 using MatrixCalculator.Domain.Interfaces;
@@ -14,7 +15,7 @@ namespace MatrixCalculator.IO.FileWrite
 			_fileWriteStreamProvider = fileWriteStreamProvider;
 		}
 
-		public void SaveResult(Matrix[] matrices)
+		public void SaveResult(IReadOnlyList<Matrix> matrices)
 		{
 			using (var writer = _fileWriteStreamProvider.GetWriteStream())
 			{
@@ -38,10 +39,10 @@ namespace MatrixCalculator.IO.FileWrite
 			}
 		}
 
-		private string GetMatrixRepresentation(Matrix[] matrices)
+		private string GetMatrixRepresentation(IReadOnlyList<Matrix> matrices)
 		{
 			StringBuilder sb = new StringBuilder();
-			for (var m = 0; m < matrices.Length; m++)
+			for (var m = 0; m < matrices.Count; m++)
 			{
 				if (m > 0)
 				{

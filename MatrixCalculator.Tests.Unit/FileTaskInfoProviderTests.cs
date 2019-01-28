@@ -47,7 +47,7 @@ namespace MatrixCalculator.Tests.Unit
 		private bool TasksAreEqual(CalculationTask left, CalculationTask right)
 		{
 			return left.Operation == right.Operation
-					&& left.Matrices.Length == right.Matrices.Length
+					&& left.Matrices.Count == right.Matrices.Count
 					&& left.Matrices.SequenceEqual(right.Matrices, new MatrixEqualityComparer());
 		}
 

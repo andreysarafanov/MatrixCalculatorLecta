@@ -47,25 +47,25 @@ namespace MatrixCalculator.Domain.Services
 			}
 		}
 
-		private void Add(Matrix[] matrices)
+		private void Add(IReadOnlyList<Matrix> matrices)
 		{
 			var result = _calculationService.SumAllMatrices(matrices);
 			result.Match(_resultSaver.SaveResult, _resultSaver.SaveErrorText);
 		}
 
-		private void Subtract(Matrix[] matrices)
+		private void Subtract(IReadOnlyList<Matrix> matrices)
 		{
 			var result = _calculationService.SubtractAllMatrices(matrices);
 			result.Match(_resultSaver.SaveResult, _resultSaver.SaveErrorText);
 		}
 
-		private void Multiply(Matrix[] matrices)
+		private void Multiply(IReadOnlyList<Matrix> matrices)
 		{
 			var result = _calculationService.MultiplyAllMatrices(matrices);
 			result.Match(_resultSaver.SaveResult, _resultSaver.SaveErrorText);
 		}
 
-		private void Transpose(Matrix[] matrices)
+		private void Transpose(IReadOnlyList<Matrix> matrices)
 		{
 			var result = _calculationService.TransposeAllMatrices(matrices);
 			result.Match(_resultSaver.SaveResult, _resultSaver.SaveErrorText);

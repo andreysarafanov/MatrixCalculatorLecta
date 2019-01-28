@@ -5,9 +5,9 @@ namespace MatrixCalculator.Domain.Interfaces
 {
 	public interface IMatricesCalculationService
 	{
-		ResultOrError<Matrix, string> SumAllMatrices(Matrix[] matrices);
-		ResultOrError<Matrix, string> MultiplyAllMatrices(Matrix[] matrices);
-		ResultOrError<Matrix, string> SubtractAllMatrices(Matrix[] matrices);
-		ResultOrError<Matrix[], string> TransposeAllMatrices(Matrix[] matrices);
+		ResultOrError<Matrix, string> SumAllMatrices(IReadOnlyList<Matrix> matrices);
+		ResultOrError<Matrix, string> MultiplyAllMatrices(IReadOnlyList<Matrix> matrices);
+		ResultOrError<Matrix, string> SubtractAllMatrices(IReadOnlyList<Matrix> matrices);
+		ResultOrError<IReadOnlyList<Matrix>, string> TransposeAllMatrices(IReadOnlyList<Matrix> matrices);
 	}
 }
