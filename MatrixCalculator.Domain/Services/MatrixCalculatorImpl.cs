@@ -16,7 +16,7 @@ namespace MatrixCalculator.Domain.Services
 			{
 				newMatrix[i] = leftOp.ValuesOneDimensional[i] + rightOp.ValuesOneDimensional[i];
 			}
-			return ResultOrError<Matrix, string>.FromResult(new Matrix(leftOp.Width, leftOp.Height, newMatrix));
+			return ResultOrError<Matrix, string>.FromResult(new Matrix(leftOp.Height, leftOp.Width, newMatrix));
 		}
 
 		public ResultOrError<Matrix, string> SubtractMatrices(Matrix leftOp, Matrix rightOp)
@@ -30,7 +30,7 @@ namespace MatrixCalculator.Domain.Services
 			{
 				newMatrix[i] = leftOp.ValuesOneDimensional[i] - rightOp.ValuesOneDimensional[i];
 			}
-			return ResultOrError<Matrix, string>.FromResult(new Matrix(leftOp.Width, leftOp.Height, newMatrix));
+			return ResultOrError<Matrix, string>.FromResult(new Matrix(leftOp.Height, leftOp.Width, newMatrix));
 		}
 
 		public ResultOrError<Matrix, string> MultiplyMatrices(Matrix leftOp, Matrix rightOp)
@@ -40,7 +40,15 @@ namespace MatrixCalculator.Domain.Services
 
 		public ResultOrError<Matrix, string> TransposeMatrix(Matrix matrix)
 		{
-			throw new System.NotImplementedException();
+			var result = new Matrix(matrix.Width, matrix.Height);
+			for (var i = 0; i < matrix.Width; i++)
+			{
+				for (var j = 0; j < matrix.Height; j++)
+				{
+					result[j, i] = matrix[i, j];
+				}
+			}
+			return ResultOrError<Matrix, string>.FromResult(result);
 		}
 	}
 }

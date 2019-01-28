@@ -11,19 +11,19 @@ namespace MatrixCalculator.Domain.Entities
 			get
 			{
 				CheckBounds(i, j);
-				return ValuesOneDimensional[i * Width + j];
+				return ValuesOneDimensional[j * Width + i];
 			}
 			set
 			{
 				CheckBounds(i, j);
-				ValuesOneDimensional[i * Width + j] = value;
+				ValuesOneDimensional[j * Width + i] = value;
 			}
 		}
 
 		public int Width { get; set; }
 		public int Height { get; set; }
 
-		public Matrix(int width, int height, int[] valuesOneDimensional)
+		public Matrix(int height, int width, int[] valuesOneDimensional)
 		{
 			if (valuesOneDimensional.Length != width * height)
 			{
@@ -35,7 +35,7 @@ namespace MatrixCalculator.Domain.Entities
 			ValuesOneDimensional = valuesOneDimensional;
 		}
 
-		public Matrix(int width, int height)
+		public Matrix(int height, int width)
 		{
 			Width = width;
 			Height = height;

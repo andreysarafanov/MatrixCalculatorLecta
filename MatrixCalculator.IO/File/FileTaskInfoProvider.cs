@@ -111,7 +111,7 @@ namespace MatrixCalculator.IO.File
 				if (i == 0)
 				{
 					firstLineWidth = line.Length;
-					result = new Matrix(line.Length, lines.Length);
+					result = new Matrix(lines.Length, line.Length);
 				}
 
 				if (line.Length != firstLineWidth)

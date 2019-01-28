@@ -1,4 +1,4 @@
-namespace MatrixCalculator.Domain
+namespace MatrixCalculator.Domain.Interfaces
 {
 	public interface ITaskRunner
 	{

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MatrixCalculator.Domain.Entities;
 using MatrixCalculator.Domain.Interfaces;
 
-namespace MatrixCalculator.Domain
+namespace MatrixCalculator.Domain.Services
 {
 	public class TaskRunner : ITaskRunner
 	{
