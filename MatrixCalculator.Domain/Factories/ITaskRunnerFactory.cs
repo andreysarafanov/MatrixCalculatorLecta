@@ -4,6 +4,6 @@ namespace MatrixCalculator.Domain.Factories
 {
 	public interface ITaskRunnerFactory
 	{
-		ITaskRunner CreateTaskRunner(ITaskInfoProvider taskInfoProvider, ITaskResultSaver taskResultSaver);
+		ITaskRunner CreateTaskRunner(ITaskInfoReader taskInfoReader, ITaskResultSaver taskResultSaver);
 	}
 }

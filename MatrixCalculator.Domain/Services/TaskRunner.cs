@@ -7,23 +7,23 @@ namespace MatrixCalculator.Domain.Services
 {
 	public class TaskRunner : ITaskRunner
 	{
-		private readonly ITaskInfoProvider _infoProvider;
+		private readonly ITaskInfoReader _infoReader;
 		private readonly ITaskResultSaver _resultSaver;
 		private readonly IMatricesCalculationService _calculationService;
 
 		public TaskRunner(
-			ITaskInfoProvider infoProvider,
+			ITaskInfoReader infoReader,
 			ITaskResultSaver resultSaver,
 			IMatricesCalculationService calculationService)
 		{
-			_infoProvider = infoProvider;
+			_infoReader = infoReader;
 			_resultSaver = resultSaver;
 			_calculationService = calculationService;
 		}
 
 		public void Run()
 		{
-			_infoProvider.GetTaskDetails().Match(PerformTask, _resultSaver.SaveErrorText);
+			_infoReader.GetTaskDetails().Match(PerformTask, _resultSaver.SaveErrorText);
 		}
 
 		private void PerformTask(CalculationTask task)

@@ -25,7 +25,7 @@ namespace MatrixCalculator.Tests.Unit
 		public void FileTaskInfoProvider_WhenProvidedWithCorrectText_ReturnsCorrectData((string text, CalculationTask correctTask) param)
 		{
 			var contentProvider = PrepareFileContentProvider(param.text);
-			var taskInfoProvider = new FileTaskInfoProvider(contentProvider);
+			var taskInfoProvider = new FileTaskInfoReader(contentProvider);
 			var calculationResult = taskInfoProvider.GetTaskDetails();
 			Assert.False(calculationResult.IsError);
 			Assert.True(TasksAreEqual(param.correctTask, calculationResult.Result));
@@ -39,7 +39,7 @@ namespace MatrixCalculator.Tests.Unit
 		public void FileTaskInfoProvider_WhenProvidedWithIncorrectText_ReturnsError(string text)
 		{
 			var contentProvider = PrepareFileContentProvider(text);
-			var taskInfoProvider = new FileTaskInfoProvider(contentProvider);
+			var taskInfoProvider = new FileTaskInfoReader(contentProvider);
 			var calculationResult = taskInfoProvider.GetTaskDetails();
 			Assert.True(calculationResult.IsError);
 		}

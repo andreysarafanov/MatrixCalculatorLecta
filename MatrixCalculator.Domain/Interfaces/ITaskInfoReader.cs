@@ -3,7 +3,7 @@ using MatrixCalculator.Domain.Entities;
 
 namespace MatrixCalculator.Domain.Interfaces
 {
-	public interface ITaskInfoProvider
+	public interface ITaskInfoReader
 	{
 		ResultOrError<CalculationTask, string> GetTaskDetails();
 	}

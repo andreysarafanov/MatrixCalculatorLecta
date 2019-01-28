@@ -7,12 +7,12 @@ using MatrixCalculator.Domain.Interfaces;
 
 namespace MatrixCalculator.IO.File
 {
-	public class FileTaskInfoProvider: ITaskInfoProvider
+	public class FileTaskInfoReader: ITaskInfoReader
 	{
-		public const string MultiplyString = "multiply";
-		public const string AddString = "add";
-		public const string SubtractString = "subtract";
-		public const string TransposeString = "transpose";
+		private const string MultiplyString = "multiply";
+		private const string AddString = "add";
+		private const string SubtractString = "subtract";
+		private const string TransposeString = "transpose";
 
 		private static readonly IReadOnlyCollection<Operation> TwoOperandsOperations = new[]
 		{
@@ -21,7 +21,7 @@ namespace MatrixCalculator.IO.File
 
 		private readonly IFileContentProvider _fileContentProvider;
 
-		public FileTaskInfoProvider(IFileContentProvider fileContentProvider)
+		public FileTaskInfoReader(IFileContentProvider fileContentProvider)
 		{
 			_fileContentProvider = fileContentProvider;
 		}

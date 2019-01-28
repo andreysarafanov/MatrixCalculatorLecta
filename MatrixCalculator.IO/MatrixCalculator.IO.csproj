@@ -39,7 +39,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Include="File\FileContentProvider.cs" />
-	  <Compile Include="File\FileTaskInfoProvider.cs" />
+	  <Compile Include="File\FileTaskInfoReader.cs" />
 	  <Compile Include="File\IFileContentProvider.cs" />
 	</ItemGroup>
 	<ItemGroup>
