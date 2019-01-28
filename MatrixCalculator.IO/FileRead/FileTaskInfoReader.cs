@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using MatrixCalculator.Domain.Entities;
 using MatrixCalculator.Domain.Interfaces;
 
-namespace MatrixCalculator.IO.File
+namespace MatrixCalculator.IO.FileRead
 {
-	public class FileTaskInfoReader: ITaskInfoReader
+	public class FileTaskInfoReader : ITaskInfoReader
 	{
 		private const string MultiplyString = "multiply";
 		private const string AddString = "add";
@@ -19,44 +18,37 @@ namespace MatrixCalculator.IO.File
 			Operation.Add, Operation.Multiply, Operation.Subtract
 		};
 
-		private readonly IFileContentProvider _fileContentProvider;
+		private readonly IFileReadStreamProvider _fileReadStreamProvider;
 
-		public FileTaskInfoReader(IFileContentProvider fileContentProvider)
+		public FileTaskInfoReader(IFileReadStreamProvider fileReadStreamProvider)
 		{
-			_fileContentProvider = fileContentProvider;
+			_fileReadStreamProvider = fileReadStreamProvider;
 		}
 
 		public ResultOrError<CalculationTask, string> GetTaskDetails()
 		{
-			using (var streamReader = _fileContentProvider.GetFileContent())
+			using (var streamReader = _fileReadStreamProvider.GetFileContent())
 			{
 				var text = streamReader.ReadToEnd();
 				var parts = text.Split(new[] {Environment.NewLine + Environment.NewLine},
 					StringSplitOptions.RemoveEmptyEntries);
-				if (parts.Length < 2)
-				{
-					return ResultOrError<CalculationTask, string>.FromError("Некорректный формат");
-				}
+				if (parts.Length < 2) return ResultOrError<CalculationTask, string>.FromError("Некорректный формат");
 
 				var operation = ParseOperation(parts.First());
 				if (operation == null)
-				{
 					return ResultOrError<CalculationTask, string>.FromError($"Неизвестная операция {parts.First()}");
-				}
 
 				if (TwoOperandsOperations.Contains(operation.Value) && parts.Length < 3)
-				{
-					return ResultOrError<CalculationTask, string>.FromError("Для сложения/вычитания/умножения нужно как минимум две матрицы");
-				}
+					return ResultOrError<CalculationTask, string>.FromError(
+						"Для сложения/вычитания/умножения нужно как минимум две матрицы");
 
-				Matrix[] matrices = new Matrix[parts.Length - 1];
+				var matrices = new Matrix[parts.Length - 1];
 				for (var i = 1; i < parts.Length; i++)
 				{
 					var matrixOrError = ParseMatrix(parts[i]);
 					if (matrixOrError.IsError)
-					{
-						return ResultOrError<CalculationTask, string>.FromError($"Ошибка в матрице #{i - 1}: {matrixOrError.Error}");
-					}
+						return ResultOrError<CalculationTask, string>.FromError(
+							$"Ошибка в матрице #{i - 1}: {matrixOrError.Error}");
 
 					matrices[i - 1] = matrixOrError.Result;
 				}
@@ -94,19 +86,15 @@ namespace MatrixCalculator.IO.File
 			for (var i = 0; i < lines.Length; i++)
 			{
 				var line = lines[i].Split(' ')
-					.Select(intString => Int32.TryParse(intString, out var x)
+					.Select(intString => int.TryParse(intString, out var x)
 						? ResultOrError<int, string>.FromResult(x)
 						: ResultOrError<int, string>.FromError($"{intString} не является валидным числом"))
 					.ToArray();
 
 				if (!line.Any())
-				{
 					return ResultOrError<Matrix, string>.FromError("В матрице не могут быть пустые строки");
-				}
 				if (line.Any(n => n.IsError))
-				{
 					return ResultOrError<Matrix, string>.FromError(line.First(n => n.IsError).Error);
-				}
 
 				if (i == 0)
 				{
@@ -115,16 +103,14 @@ namespace MatrixCalculator.IO.File
 				}
 
 				if (line.Length != firstLineWidth)
-				{
-					return ResultOrError<Matrix, string>.FromError($"Число элементов в строке #{i+1} отличается от первой строки");
-				}
+					return ResultOrError<Matrix, string>.FromError(
+						$"Число элементов в строке #{i + 1} отличается от первой строки");
 
 				for (var j = 0; j < firstLineWidth; j++)
-				{
 					// ReSharper disable once PossibleNullReferenceException
 					result.ValuesOneDimensional[i * firstLineWidth + j] = line[j].Result;
-				}
 			}
+
 			return ResultOrError<Matrix, string>.FromResult(result);
 		}
 	}

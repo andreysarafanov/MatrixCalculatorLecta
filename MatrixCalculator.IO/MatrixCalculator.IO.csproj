@@ -38,9 +38,13 @@
 	  </ProjectReference>
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Include="File\FileContentProvider.cs" />
-	  <Compile Include="File\FileTaskInfoReader.cs" />
-	  <Compile Include="File\IFileContentProvider.cs" />
+	  <Compile Include="FileWrite\FileResultWriter.cs" />
+	  <Compile Include="FileWrite\FileWriteStreamProvider.cs" />
+	  <Compile Include="FileWrite\IFileWriteStreamProvider.cs" />
+	  <Compile Include="FileRead\FileReadStreamProvider.cs" />
+	  <Compile Include="FileRead\FileTaskInfoReader.cs" />
+	  <Compile Include="FileRead\IFileReadStreamProvider.cs" />
+	  <Compile Include="ProgramWithFileIOCompositionRoot.cs" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="MoreLinq, Version=3.1.0.0, Culture=neutral, PublicKeyToken=384d532d7e88985d">

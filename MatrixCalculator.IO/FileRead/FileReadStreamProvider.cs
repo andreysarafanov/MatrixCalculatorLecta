@@ -1,12 +1,12 @@
 using System.IO;
 
-namespace MatrixCalculator.IO.File
+namespace MatrixCalculator.IO.FileRead
 {
-	public class FileContentProvider: IFileContentProvider
+	public class FileReadStreamProvider : IFileReadStreamProvider
 	{
 		private readonly string _filePath;
 
-		public FileContentProvider(string filePath)
+		public FileReadStreamProvider(string filePath)
 		{
 			_filePath = filePath;
 		}

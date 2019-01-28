@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MatrixCalculator.Domain.Entities;
-using MatrixCalculator.IO.File;
+using MatrixCalculator.IO.FileRead;
 using Moq;
 using NUnit.Framework;
 
@@ -14,9 +14,9 @@ namespace MatrixCalculator.Tests.Unit
 	public class FileTaskInfoProviderTests
 	{
 
-		private IFileContentProvider PrepareFileContentProvider(string text)
+		private IFileReadStreamProvider PrepareFileContentProvider(string text)
 		{
-			var fileContentProvider = new Mock<IFileContentProvider>();
+			var fileContentProvider = new Mock<IFileReadStreamProvider>();
 			fileContentProvider.Setup(p => p.GetFileContent()).Returns(new StringReader(text));
 			return fileContentProvider.Object;
 		}
